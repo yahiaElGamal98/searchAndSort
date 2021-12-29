@@ -5,6 +5,6 @@
 
 void swap(uint32_t*, uint32_t*);
 void sortAndCheck(uint32_t*, uint8_t);
-uint8_t binarySearch(uint8_t*, uint8_t,  uint8_t);
+uint8_t binarySearch(uint32_t*, uint8_t,  uint32_t);
 
 #endif

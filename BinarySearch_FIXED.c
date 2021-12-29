@@ -12,7 +12,7 @@
 /*FUNCTION IMPLEMENTATIONS*******************/
 void swap(uint32_t* left, uint32_t* right)
 {
-   uint8_t u8_temp;       // temp variable for swapping
+   uint32_t u8_temp;       // temp variable for swapping
    u8_temp = *right;      // temp variable equal right
    *right = *left;         // right handside variable eqal left var
    *left = u8_temp;        //left variable equal temp
