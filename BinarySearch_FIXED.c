@@ -7,10 +7,10 @@
 #define FALSE 0
 #define TRUE 1
 #define NO_ITERATIONS 0
-#define NOT_FOUND 255
+#define NOT_FOUND 255  //can't return -1 (unsigned int return)
 
 /*FUNCTION IMPLEMENTATIONS*******************/
-void swap(uint8_t* left, uint8_t* right)
+void swap(uint32_t* left, uint32_t* right)
 {
    uint8_t u8_temp;       // temp variable for swapping
    u8_temp = *right;      // temp variable equal right
@@ -18,7 +18,7 @@ void swap(uint8_t* left, uint8_t* right)
    *left = u8_temp;        //left variable equal temp
 }
 
-void sortAndCheck(uint8_t* arr, uint8_t size)
+void sortAndCheck(uint32_t* arr, uint8_t size)
 {
    uint8_t u8_traverseIndex   // used for moving in loop
       , u8_iterationIndex   //used for iterations 
@@ -58,7 +58,7 @@ void sortAndCheck(uint8_t* arr, uint8_t size)
       printf("Array is already sorted.\n");
    }   
 }
-uint8_t binarySearch(uint8_t searchElement, uint8_t* arr, uint8_t size)
+uint8_t binarySearch(uint32_t* arr, uint8_t size, uint32_t searchElement)
 {
    uint8_t u8_start = 0    //start search index
       , u8_end = size - 1     //end search index
@@ -89,15 +89,15 @@ uint8_t binarySearch(uint8_t searchElement, uint8_t* arr, uint8_t size)
 }
 void main()
 {
-   uint8_t u8_arr[] = { 5,3,15,19,14,2,20 };   //insert your Array here
-   uint8_t u8_searchNum = 2;     //search for any element here
-   uint8_t u8_size = sizeof(u8_arr)/sizeof(uint8_t);   //calculating size based on input
+   uint32_t u32_arr[] = { 15,87,30,21,47,69,201,78 };   //insert your Array here (NO MORE THAN 255 ELEMENTS)
+   uint32_t u32_searchNum = 87;     //search for any element here
+   uint8_t u8_size = sizeof(u32_arr)/sizeof(uint32_t);   //calculating size based on input
    uint8_t u8_index;    //variable to print the array after sorting for debugging
    uint8_t u8_returnIndex;    //variable to store index of found element
-   u8_returnIndex = binarySearch(u8_searchNum,u8_arr,u8_size);
+   u8_returnIndex = binarySearch(u32_arr,u8_size, u32_searchNum);
    if (u8_returnIndex != NOT_FOUND)
    {
-      printf("The search element %d is present at index (%d)\n ",u8_searchNum, u8_returnIndex);
+      printf("The search element %d is present at index (%d)\n ",u32_searchNum, u8_returnIndex);
    }
    else
    {
@@ -106,7 +106,7 @@ void main()
    printf("\n");
    for (u8_index = 0; u8_index < u8_size; u8_index++)    
    {
-      printf("Array Element %d: %d \n", u8_index, u8_arr[u8_index]);
+      printf("Array Element %d: %d \n", u8_index, u32_arr[u8_index]);
    }
    system("PAUSE");
 }
